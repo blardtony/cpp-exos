@@ -5,24 +5,10 @@
 
 using namespace std;
 
-bool is_valid_pattern(const string& rgx)
-{
-    bool result = true;
-    try
-    {
-        std::regex tmp(rgx);
-    }
-    catch (const std::regex_error& e)
-    {
-        (e);
-        result = false;
-    }
-    return result;
-}
-
 int main()
 {
-    string path, pattern;
+    string path;
+    string pattern;
     string line;
     string word;
 
@@ -52,6 +38,7 @@ int main()
     else 
     {
         cout << "The file " << path << " could not be opened.\n";
+        return 1;
     }
     return 0;
 }
