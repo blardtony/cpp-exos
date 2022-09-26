@@ -5,14 +5,12 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-    string path;
-    string pattern;
+    string path = argv[1];
+    string pattern = argv[2];
     string line;
     string word;
-
-    cin >> path >> pattern;
     
     regex rgx(pattern);
     ifstream myfile(path);
