@@ -9,3 +9,9 @@
 ### Code review
 - Is Prime : Code optimisé, la fonction pour créer la liste est superflue.
 - Find Motive : Excellent code rien à dire, peut-être la fonction open() est de trop.
+
+## Semaine 2
+
+### Project
+
+### Code review
