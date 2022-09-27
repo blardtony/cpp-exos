@@ -6,7 +6,7 @@
 - Find Motive
 - Is Prime
 
-### Code review
+### Code review Groupe 31 Aymen et Andy
 - Is Prime : Code optimisé, la fonction pour créer la liste est superflue.
 - Find Motive : Excellent code rien à dire, peut-être la fonction open() est de trop.
 
@@ -14,4 +14,4 @@
 
 ### Project
 
-### Code review
+### Code review Groupe
