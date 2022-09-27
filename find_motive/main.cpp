@@ -19,15 +19,11 @@ int main(int argc, char *argv[])
 
     if (myfile.is_open())
     {
-        while (getline(myfile, line))
+        while (myfile >> word)
         {
-            stringstream ss(line);
-            while (ss >> word)
+            if (regex_search(word, rgx))
             {
-                if (regex_search(word, rgx))
-                {
-                    ++word_count;
-                }
+                ++word_count;
             }
         }
         myfile.close();
