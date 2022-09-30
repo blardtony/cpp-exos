@@ -15,28 +15,30 @@ public:
 
 // Add suitable constructors
     Vector();
-    Vector(std::initializer_list<int> list);
+    Vector(std::initializer_list<value>);
     // possibly more
 
 // Public Member functions here
-    Vector& operator+=(const Vector& rhs);
-    Vector& operator+=(value rhs);
-    Vector& operator-=(const Vector& rhs);
-    Vector& operator*=(const Vector& rhs);
-    Vector& operator*=(const value& rhs);
-
     Vector& operator+(const Vector& rhs);
-    Vector& operator*(value rhs);
-    Vector& operator*(Vector& rhs);
+
+    Vector& operator*(const value& rhs);
+
+    value operator*(const Vector& rhs);
 
     value& operator[](size_t rhs);
-    
-    value operator*(const Vector& rhs);
-    // More to go
 
+    Vector& operator+=(const Vector& rhs);
+
+    Vector& operator-=(const Vector& rhs);
+    
+    Vector& operator*=(const value& rhs);
+
+    Vector& operator+=(const value& rhs);
+
+    // More to go
 private:
 // Private Member functions here
-    int* list;
+
 // Member variables are ALWAYS private, and they go here
 };
 
