@@ -26,9 +26,14 @@ Vector::Vector(std::initializer_list<value> values)
     }
 }
 
+Vector::Vector(value *array)
+{
+}
+
 Vector& Vector::operator+(const Vector& rhs)
 {
-    return *this;
+    auto v = Vector{rhs};
+    return v += *this;
 }
 
 Vector& Vector::operator*(const value& rhs)
@@ -47,7 +52,11 @@ value& Vector::operator[](size_t rhs)
 
 Vector& Vector::operator+=(const Vector& rhs)
 {
-
+    for (size_t i = 0; i < NDIM; ++i)
+    {
+        this->data[i] += rhs.data[i];
+    }
+    return *this;
 }
 
 Vector& Vector::operator-=(const Vector& rhs)

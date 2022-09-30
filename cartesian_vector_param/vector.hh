@@ -16,6 +16,7 @@ public:
 // Add suitable constructors
     Vector();
     Vector(std::initializer_list<value> values);
+    Vector(value *array);
     // possibly more
 
 // Public Member functions here
