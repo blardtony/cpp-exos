@@ -7,20 +7,28 @@
 
 Vector::Vector()
 {
-    
+    for (size_t i = 0; i < NDIM; ++i)
+    {
+        data[i] = 0;
+        std::cout << data[i] << "\n";
+    }
 }
 
 
 Vector::Vector(std::initializer_list<value> values)
 {
-    std::cout << values.size() << "\n";
-    std::cout << *values.begin() << "\n";
-    std::cout << *((values.end())-1) << "\n";
+    std::initializer_list<value>::iterator it;
+    size_t i = 0;
+    for ( it=values.begin(); it!=values.end(); ++it)
+    {
+        data[i++] = *it;
+        std::cout << data[i-1] << "\n";
+    }
 }
 
 Vector& Vector::operator+(const Vector& rhs)
 {
-
+    return *this;
 }
 
 Vector& Vector::operator*(const value& rhs)
@@ -62,11 +70,18 @@ Vector& Vector::operator+=(const value& rhs)
 
 std::ostream& operator<<(std::ostream& out, const Vector& rhs)
 {
-
+    size_t i = 0;
+    out << "{";
+    value* data = Vector{rhs}.getData();
+    for (i; i < NDIM -1; ++i)
+    {
+        out << data[i] << ",";
+    }
+    out << data[i] << "}";
+    return out;
 }
 
-
-
-
-
-
+value *Vector::getData()
+{
+    return data;
+}

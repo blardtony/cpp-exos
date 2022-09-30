@@ -15,7 +15,7 @@ public:
 
 // Add suitable constructors
     Vector();
-    Vector(std::initializer_list<value>);
+    Vector(std::initializer_list<value> values);
     // possibly more
 
 // Public Member functions here
@@ -36,10 +36,12 @@ public:
     Vector& operator+=(const value& rhs);
 
     // More to go
+    value *getData();
 private:
 // Private Member functions here
 
 // Member variables are ALWAYS private, and they go here
+    value data[NDIM];
 };
 
 // Nonmember function operators go here
