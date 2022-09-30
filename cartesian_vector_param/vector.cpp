@@ -38,7 +38,11 @@ Vector& Vector::operator+(const Vector& rhs)
 
 Vector& Vector::operator*(const value& rhs)
 {
-
+    for (size_t i = 0; i < NDIM; ++i)
+    {
+        this->data[i] *= rhs;
+    }
+    return *this;
 }
 value Vector::operator*(const Vector& rhs)
 {
@@ -47,6 +51,7 @@ value Vector::operator*(const Vector& rhs)
 
 value& Vector::operator[](size_t rhs)
 {
+    
 }
 
 
@@ -61,7 +66,11 @@ Vector& Vector::operator+=(const Vector& rhs)
 
 Vector& Vector::operator-=(const Vector& rhs)
 {
-
+    for (size_t i = 0; i < NDIM; ++i)
+    {
+        this->data[i] -= rhs.data[i];
+    }
+    return *this;
 }
 
 Vector& Vector::operator*=(const value& rhs)
