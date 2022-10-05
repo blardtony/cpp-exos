@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
     string line;
     string word;
     
-    regex rgx(pattern);
     ifstream myfile(path);
 
     int word_count = 0;
@@ -21,7 +20,7 @@ int main(int argc, char *argv[])
     {
         while (myfile >> word)
         {
-            if (regex_search(word, rgx))
+            if (word.find(pattern) !=std::string::npos)
             {
                 ++word_count;
             }
