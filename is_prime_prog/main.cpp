@@ -1,26 +1,37 @@
 #include <iostream>
 #include <string>
 
-bool is_prime(int num)
+bool is_prime(long num)
 {
-    for (int i = 2; i < num / 2; i++)
+    if (num == 3 || num == 2)
+    {
+        return true;
+    }
+
+    if (num % 2 == 0 || num % 3 == 0)
+    {
+        return false;
+    }
+
+    for (int i = 4; i * i <= num; i++)
     {
         if (num % i == 0)
         {
+            std::cout << i << std::endl;
             return false;
         }
     }
     return num < 2 ? false : true;
 }
 
-void printPrimeNumber(int num)
+void printPrimeNumber(long num)
 {
     std::cout << num << " is a prime: " << (is_prime(num) == 1 ? "True" : "False") << "\n"; 
 }
 
 int main()
 {
-    int n;
+    long n;
     while (std::cin >> n)
     {
         printPrimeNumber(n);
