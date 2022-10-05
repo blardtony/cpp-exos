@@ -17,7 +17,6 @@ bool is_prime(long num)
     {
         if (num % i == 0)
         {
-            std::cout << i << std::endl;
             return false;
         }
     }
