@@ -15,35 +15,33 @@ public:
 
 // Add suitable constructors
     Vector();
-    Vector(std::initializer_list<value> values);
-    Vector(value *array);
-    // possibly more
+    Vector(std::initializer_list<value> l);
+
+    size_t size() const;
 
 // Public Member functions here
-    Vector& operator+(const Vector& rhs);
-
-    Vector& operator*(const value& rhs);
-
-    value operator*(const Vector& rhs);
-
-    value& operator[](size_t rhs);
-
     Vector& operator+=(const Vector& rhs);
-
-    Vector& operator-=(const Vector& rhs);
-    
-    Vector& operator*=(const value& rhs);
-
-    Vector& operator+=(const value& rhs);
-
     // More to go
-    value *getData();
-private:
-// Private Member functions here
+    Vector& operator-=(const Vector& rhs);
+    Vector& operator+=(value v);
+    Vector& operator*=(value v);
 
-// Member variables are ALWAYS private, and they go here
+    Vector operator+(const Vector& rhs) const;
+    Vector operator+(value v) const;
+    value operator*(const Vector& rhs) const;
+    Vector operator*(value v) const;
+
+    value& operator[](size_t idx);
+    value operator[](size_t idx) const;
+
+private:
+// Private Member functions here (if necessary)
     value data[NDIM];
+    size_t vector_size;
+// Member variables are ALWAYS private, and they go here
 };
 
 // Nonmember function operators go here
-std::ostream& operator<<(std::ostream& out, const Vector& rhs);
+Vector operator*(const value& s, const Vector& v);
+Vector operator+(const value& s, const Vector& v);
+std::ostream& operator<<(std::ostream& o, const Vector& v);
