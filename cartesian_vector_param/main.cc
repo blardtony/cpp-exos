@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "vector.hh"
+
 #include <vector>
 #include <cstring> //strcmp
 
@@ -14,12 +15,12 @@ void testInit()
     auto t = Vector{ -1, 6 };
 
     std::cout << u + v << '\n'; // {4,7}
-    // u += Vector{ 1, 8 };
-    // std::cout << u << '\n'; // {1,8}
-    // t -= u;
-    // std::cout << t << '\n'; // {-2,-2}
-    // std::cout << t * 3 << '\n'; // {-6,-6}
-    // std::cout << u * v << '\n'; // 60
+    u += Vector{ 1, 8 };
+    std::cout << u << '\n'; // {1,8}
+    t -= u;
+    std::cout << t << '\n'; // {-2,-2}
+    std::cout << t * 3 << '\n'; // {-6,-6}
+    std::cout << u * v << '\n'; // 60
 
 }
 #elif NDIM == 3
@@ -118,7 +119,7 @@ void testVar(size_t n, int argc, char* argv[])
         }
     value sum = 0;
     for (size_t i = 1; i < n; i += 2)
-        // sum += v[i-1] * v[i];
+        sum += v[i-1]*v[i];
     std::cout << sum;
     std::cout.put('\n');
 }
