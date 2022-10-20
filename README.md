@@ -15,8 +15,13 @@
 ### Project
 - Cartesian Vector Param
 
-### Code review Groupe
-- Cartesian Vector Param
-
 ### Code review Groupe 30
  - Catersian param : Premier rendu vide. Deuxième rendu le code est optimisé et fonctionnel.
+
+## Semaine 3
+
+### Project
+- Cartesian Vector Variable
+
+### Code review Groupe
+- Cartesian Vector Variable
