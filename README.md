@@ -17,3 +17,6 @@
 
 ### Code review Groupe
 - Cartesian Vector Param
+
+### Code review Groupe 30
+ - Catersian param : Premier rendu vide. Deuxième rendu le code est optimisé et fonctionnel.
