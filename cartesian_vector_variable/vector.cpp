@@ -7,18 +7,34 @@
 Vector::Vector(size_t N)
 {
     vector_size = N;
+    
+    data = std::make_unique<int[]>(vector_size);
+
     for (size_t i = 0; i < vector_size; ++i)
     {
-    //     data[i] = 0;
+        data[i] = 0;
     }
 }
 
 Vector::Vector(std::initializer_list<value> l)
 {
+    vector_size = l.size();
+    std::initializer_list<value>::iterator it;
+    data = std::make_unique<int[]>(vector_size);
+    size_t i = 0;
+    for ( it=l.begin(); it!=l.end(); ++it)
+    {
+        data[i++] = *it;
+    }
 }
 
-Vector::Vector(const Vector&)
+Vector::Vector(const Vector& vec)
 {
+    vector_size = vec.size();
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        this[i] = vec[i];
+    }
 }
 
 Vector& Vector::operator=(const Vector&)
@@ -44,44 +60,85 @@ std::ostream& operator<<(std::ostream& o, const Vector& v)
 
 Vector& Vector::operator+=(const Vector& rhs)
 {
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        data[i] += rhs[i];   
+    }
+
     return *this;
 }
 
 Vector& Vector::operator-=(const Vector& rhs)
 {
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        data[i] -= rhs[i];   
+    }
+
     return *this;
 }
+
 Vector& Vector::operator+=(value v)
 {
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        data[i] += v;
+    }
     return *this;
 }
+
 Vector& Vector::operator*=(value v)
 {
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        data[i] *= v;
+    }
     return *this;
 }
 
 Vector Vector::operator+(const Vector& rhs) const
 {
-    return *this;
+    auto v = Vector{};
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        v[i] = data[i] + rhs[i];
+    }
+    return v;
 }
 Vector Vector::operator+(value v) const
 {
-    return *this;
+    auto vec = Vector{};
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        vec[i] = data[i] + v;
+    }
+    return vec;
 }
 value Vector::operator*(const Vector& rhs) const
 {
-    value a = 1;
-    return a;
+    value product = 0;
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        product += data[i] * rhs[i];   
+    }
+    return product;
 }
 Vector Vector::operator*(value v) const
 {
-    return *this;
+    auto vec = Vector{};
+    for (size_t i = 0; i < vector_size; ++i)
+    {
+        vec[i] = data[i] * v;   
+    }
+
+    return vec;
 }
 
 value& Vector::operator[](size_t idx)
 {
     return data[idx];
 }
+
 value Vector::operator[](size_t idx) const
 {
     return data[idx];
@@ -89,9 +146,19 @@ value Vector::operator[](size_t idx) const
 
 Vector operator+(const value& s, const Vector& v)
 {
-    return v;
+    auto vec = Vector{};
+    for (size_t i = 0; i < v.size(); ++i)
+    {
+        vec[i] = v[i] * s;   
+    }
+    return vec;
 }
 Vector operator*(const value& s, const Vector& v)
 {
-    return v;
+    auto vec = Vector{};
+    for (size_t i = 0; i < v.size(); ++i)
+    {
+        vec[i] = v[i] + s;   
+    }
+    return vec;
 }
