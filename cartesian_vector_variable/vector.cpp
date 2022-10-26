@@ -69,6 +69,8 @@ std::ostream &operator<<(std::ostream &o, const Vector &v)
 
 Vector &Vector::operator+=(const Vector &rhs)
 {
+    if (vector_size != rhs.size())
+        std::runtime_error("Vector not same size");
     for (size_t i = 0; i < vector_size; ++i)
     {
         data[i] += rhs[i];
@@ -79,6 +81,8 @@ Vector &Vector::operator+=(const Vector &rhs)
 
 Vector &Vector::operator-=(const Vector &rhs)
 {
+    if (vector_size != rhs.size())
+        std::runtime_error("Vector not same size");
     for (size_t i = 0; i < vector_size; ++i)
     {
         data[i] -= rhs[i];
@@ -107,6 +111,8 @@ Vector &Vector::operator*=(value v)
 
 Vector Vector::operator+(const Vector &rhs) const
 {
+    if (vector_size != rhs.size())
+        std::runtime_error("Vector not same size");
     auto v = Vector(vector_size);
     for (size_t i = 0; i < vector_size; ++i)
     {
@@ -125,6 +131,8 @@ Vector Vector::operator+(value v) const
 }
 value Vector::operator*(const Vector &rhs) const
 {
+    if (vector_size != rhs.size())
+        std::runtime_error("Vector not same size");
     value product = 0;
     for (size_t i = 0; i < vector_size; ++i)
     {
@@ -145,11 +153,15 @@ Vector Vector::operator*(value v) const
 
 value &Vector::operator[](size_t idx)
 {
+    if (vector_size < idx)
+        std::runtime_error("Index greater than size");
     return data[idx];
 }
 
 value Vector::operator[](size_t idx) const
 {
+    if (vector_size < idx)
+        std::runtime_error("Index greater than size");
     return data[idx];
 }
 
