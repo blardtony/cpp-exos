@@ -14,41 +14,49 @@
 // something more meaningful
 
 
-template<class INPUT, class COUNT>
-void read_file_to_cont(INPUT& f, COUNT c) {
-  return;
-}
-
-
-template<class INPUT, class OUTPUT>
-void read_and_sort(INPUT& fi, OUTPUT& fo) {
-  return;
-}
-
-
-template<class INPUT, class OUTPUT>
-void read_and_sort_decide_container(INPUT& fi, OUTPUT& fo) {
-  std::string line;
-
-  if (fi.is_open())
-  { 
-    getline(fi, line);
+template<class TYPE, class CONT>
+void read_file_to_cont(std::ifstream& f, CONT& c) {
+  TYPE elm;
+  while (f >> elm) {
+    c.push_back(elm);
   }
 
-  std::cout << line[0] << std::endl;
+}
 
-  switch(line[0])
+
+template<class TYPE ,class CONTAINER>
+void read_and_sort(std::ifstream& fi, std::ofstream& fo) {
+
+  CONTAINER container = {};
+  read_file_to_cont<TYPE, CONTAINER>(fi, container);
+  my_selection_sort(container.begin(), container.end());
+
+  for (TYPE& elm : container) {
+    fo << elm << std::endl;
+  }
+
+}
+
+
+template<class TYPE>
+void read_and_sort_decide_container(std::ifstream& fi, std::ofstream& fo) {
+  char line;
+  fi >> line;
+
+  fo << line << std::endl;
+
+  switch(line)
   {
     case 'l':
-      std::cout << "l is good " << std::endl;
+      read_and_sort<TYPE, std::list<TYPE>>(fi, fo);
       break;
 
     case 'v':
-      std::cout << "v is good " << std::endl;
+      read_and_sort<TYPE, std::vector<TYPE>>(fi, fo);
       break;
 
     case 'd':
-      std::cout << "d is good " << std::endl;
+      read_and_sort<TYPE, std::deque<TYPE>>(fi, fo);
       break;
 
     default:
@@ -58,41 +66,38 @@ void read_and_sort_decide_container(INPUT& fi, OUTPUT& fo) {
 }
 
 
-template<class INPUT, class OUTPUT>
-void read_and_sort_decide_valuetype(INPUT& fi, OUTPUT& fo) {
-  std::string line;
+void read_and_sort_decide_valuetype(std::ifstream& fi, std::ofstream& fo) {
+  char line;
 
-  if (fi.is_open())
-  {
-    getline(fi, line);
-  }
+  fi >> line;
 
-  std::cout << line[0] << std::endl;
+  fo << line << std::endl;
 
-  switch(line[0])
+  switch(line)
   {
     case 'i':
-      std::cout << "s is good " << std::endl;
+      read_and_sort_decide_container<int>(fi, fo);
+      
       break;
 
     case 'u':
-      std::cout << "u is good " << std::endl;
+      read_and_sort_decide_container<unsigned>(fi, fo);
       break;
 
     case 'f':
-      std::cout << "f is good " << std::endl;
+      read_and_sort_decide_container<float>(fi, fo);
       break;
 
     case 'd':
-      std::cout << "d is good " << std::endl;
+      read_and_sort_decide_container<double>(fi, fo);
       break;
 
     case 'c':
-      std::cout << "c is good " << std::endl;
+      read_and_sort_decide_container<char>(fi, fo);
       break;
 
     case 's':
-      std::cout << "s is good " << std::endl;
+      read_and_sort_decide_container<std::string>(fi, fo);
       break;
 
     default:

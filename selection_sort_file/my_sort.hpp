@@ -6,7 +6,6 @@
 template<class IT>
 void my_selection_sort( IT begin, IT end)
 {
-    std::cout << "selection sort " << std::endl;
     IT min;
     IT next;
     for (IT i = begin; i != end; ++i)
@@ -21,8 +20,6 @@ void my_selection_sort( IT begin, IT end)
                 min = j;
             }
         }
-        // std::cout << " *min= "<< *min << " *i = " << *i << std::endl;
         std::swap(*min, *i);
-        // std::cout << " *min= "<< *min << " *i = " << *i << std::endl;
     }
 }
