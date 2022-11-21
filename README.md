@@ -25,3 +25,13 @@
 
 ### Code review Groupe 29
 - Cartesian Vector Variable : le code est fonctionnel, pensez à gérer les erreurs liés à la taille des vecteurs et aussi que l'index demandé n'est pas plus grand que la taille d'un vecteur.
+
+## Semaine 4
+
+### Project
+- Selection sort
+- Selection sort file
+
+### Code review Groupe
+- Selection sort
+- Selection sort file
