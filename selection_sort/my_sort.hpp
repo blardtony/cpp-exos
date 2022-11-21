@@ -1,7 +1,12 @@
 // Change me instead
 // All occurences of XXX need to be replaced with
 // something more meaningful
-
+template<class TYPE>
+void swap(TYPE& a, TYPE& b) {
+    TYPE tmp = a;
+    a = b;
+    b = tmp;
+}
 
 template<class IT>
 void my_selection_sort( IT begin, IT end)
@@ -19,6 +24,6 @@ void my_selection_sort( IT begin, IT end)
                 min = j;
             }
         }
-        std::swap(*min, *i);
+        swap(*min, *i);
     }
 }
