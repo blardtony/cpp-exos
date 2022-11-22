@@ -14,8 +14,8 @@
 // something more meaningful
 
 
-template<class TYPE, class CONT>
-void read_file_to_cont(std::ifstream& f, CONT& c) {
+template<class TYPE, class CONTAINER>
+void read_file_to_cont(std::ifstream& f, CONTAINER& c) {
   TYPE elm;
   while (f >> elm) {
     c.push_back(elm);
