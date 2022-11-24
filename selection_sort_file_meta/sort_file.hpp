@@ -46,10 +46,7 @@ void read_and_sort(std::ifstream& fi, std::ofstream& fo) {
   read_file_to_cont<TYPE, CONTAINER>(fi, container);
   auto begin = container.begin();
   auto end = container.end();
-    if constexpr (
-    std::is_same_v<TYPE, char>
-    || std::is_same_v<TYPE, int>
-    || std::is_same_v<TYPE, unsigned int> ) {
+    if constexpr (std::is_integral<TYPE>::value ) {
     my_selection_sort(begin, end,[](TYPE l, TYPE r)->bool{return std::make_tuple(l%2, l) < std::make_tuple(r%2, r);} );
   } else {
     my_selection_sort(begin, end,[](TYPE l, TYPE r)->bool{return l > r; } );
